@@ -17,4 +17,4 @@ Rogue Glitch Mod Loader
      - Add a modified `Assembly-CSharp.dll` to the new folder if you want to modified gameplay, 
        - For example, with [RogueTron](https://github.com/gignaWedi/RogueTron), copy the .dll file from the `Modded` folder to the folder of your new profile and you are set.
 
-Now just run the executable and you should be good to go!
+Now just run the executable and you should be good to go.
