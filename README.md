@@ -9,7 +9,7 @@ Download the Repository
 
 ### Executable
 Download the Release
-   - url
+   - Look to the side for [releases](https://github.com/gignaWedi/RGMod/releases/) and download `RGMODvx.x.x.zip`
 
 ## Setup
 > Always make backups of your game files.
