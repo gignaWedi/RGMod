@@ -10,9 +10,8 @@ Rogue Glitch Mod Loader
    - \> Local Files 
    - \> Browse
 2. Copy Files Over
-   - Run the executable to make the folders you need.
    - Copy `RogueGlitch_Data` and `RogueGlitch.exe` into `game`
-   - Copy `SaveData.glitch` and `Assembly-CSharp.dll` into `profiles/Normal`
+   - Copy `SaveData.glitch` into `profiles/Normal`
 3. Make new profiles
    - Make a new folder in the profiles folder to make a new profile
      - Add a modified `Assembly-CSharp.dll` to the new folder if you want to modified gameplay, 
