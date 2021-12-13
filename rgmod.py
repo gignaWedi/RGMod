@@ -6,6 +6,15 @@ from tkinter import ttk
 from tkinter import font
 from tkinter.messagebox import *
 
+if not os.path.exists("game"):
+    os.mkdir("game")
+
+if not os.path.exists("profiles"):
+    os.mkdir("profiles")
+
+if not os.path.exists("profiles/Normal"):
+    os.mkdir("profiles/Normal")
+
 profiles = sorted(os.listdir("profiles"))
 
 root = Tk()
@@ -31,40 +40,43 @@ save = StringVar(value="normal")
 ttk.Checkbutton(frm, text="Use Separate Profile Save Data.", variable=save, onvalue="mod", offvalue="normal").grid(column=0, row=3)
 
 def start():
-  m = mod.get()
-  s = save.get()
-  
-  if m not in profiles:
-    showwarning(title="Warning", message="You must select a profile to run.")
-  
-  else:
-    
-    if not os.path.exists(f".game/RogueGlitch_Data/BypassSteamVerification.txt"):
-      f = open(".game/RogueGlitch_Data/BypassSteamVerification.txt", "w+")
-      f.close()
-    
-    if os.path.exists(f"profiles/{m}/Assembly-CSharp.dll"):
-      shutil.copy2(f"profiles/{m}/Assembly-CSharp.dll", ".game/RogueGlitch_Data/Managed/Assembly-CSharp.dll")
+    m = mod.get()
+    s = save.get()
+
+    if not os.path.exists("profiles/Normal/Assembly-CSharp.dll") or not os.path.exists("game/RogueGlitch_Data") or not os.path.exists("game/RogueGlitch.exe"):
+        showerror(title="Error", message="You are lacking game files.\nSee https://github.com/gignaWedi/RGMod for setup instructions.")
+        
+    elif m not in profiles:
+        showwarning(title="Warning", message="You must select a profile to run.")
+        
     else:
-      shutil.copy2("profiles/Normal/Assembly-CSharp.dll", ".game/RogueGlitch_Data/Managed/Assembly-CSharp.dll")
-    
-    if os.path.exists(".game/SaveData.glitch"):
-      os.remove(".game/SaveData.glitch")
-    
-    if os.path.exists(f"profiles/{m}/SaveData.glitch") and s == "mod":
-      shutil.copy2(f"profiles/{m}/SaveData.glitch", ".game/SaveData.glitch")
-    
-    if s == "normal":
-      shutil.copy2("profiles/Normal/SaveData.glitch", ".game/SaveData.glitch")
-    
-    root.destroy()
-    os.system("cd .game && RogueGlitch.exe")
-    
-    if s == "mod" or m == "Normal":
-      shutil.copy2(".game/SaveData.glitch", f"profiles/{m}/SaveData.glitch")
-    
-    os.remove(".game/SaveData.glitch")
-  
+
+        if not os.path.exists(f"game/RogueGlitch_Data/BypassSteamVerification.txt"):
+            f = open("game/RogueGlitch_Data/BypassSteamVerification.txt", "w+")
+            f.close()
+
+        if os.path.exists(f"profiles/{m}/Assembly-CSharp.dll"):
+            shutil.copy2(f"profiles/{m}/Assembly-CSharp.dll", "game/RogueGlitch_Data/Managed/Assembly-CSharp.dll")
+        else:
+            shutil.copy2("profiles/Normal/Assembly-CSharp.dll", "game/RogueGlitch_Data/Managed/Assembly-CSharp.dll")
+
+        if os.path.exists("game/SaveData.glitch"):
+            os.remove("game/SaveData.glitch")
+
+        if os.path.exists(f"profiles/{m}/SaveData.glitch") and s == "mod":
+            shutil.copy2(f"profiles/{m}/SaveData.glitch", "game/SaveData.glitch")
+
+        if s == "normal":
+            shutil.copy2("profiles/Normal/SaveData.glitch", "game/SaveData.glitch")
+
+        #root.destroy()
+        os.system("cd game && RogueGlitch.exe")
+
+        if s == "mod" or m == "Normal":
+            shutil.copy2("game/SaveData.glitch", f"profiles/{m}/SaveData.glitch")
+
+        os.remove("game/SaveData.glitch")
+
 ttk.Button(frm, text="Start", command=start).grid(column=0, row=4)
 
 ttk.Label(frm, text="Made by gignaWedi, 2021", font=credits, foreground="grey50").grid(column=0, row=5)

@@ -1,3 +1,7 @@
-.game/RogueGlitch_Data
-.game/RogueGlitch.exe
+game/RogueGlitch_Data
+game/RogueGlitch.exe
 profiles/Normal/SaveData.glitch
+build
+dist
+__pycache__
+.ipynb_checkpoints
