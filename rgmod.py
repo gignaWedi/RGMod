@@ -1,10 +1,13 @@
 import time
 import os
 import shutil
+import pyglet
 from tkinter import *
 from tkinter import ttk
 from tkinter import font
 from tkinter.messagebox import *
+
+pyglet.font.add_file("upheavtt.ttf")
 
 profiles = sorted(os.listdir("profiles"))
 
