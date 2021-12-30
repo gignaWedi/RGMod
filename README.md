@@ -30,3 +30,5 @@ After downloading the files:
        - For example, with [RogueTron](https://github.com/gignaWedi/RogueTron), copy the .dll file from the `Modded` folder to the folder of your new profile and you are set.
 
 Now just run the script/executable and have fun!
+
+Check out [RGModsRepo](https://github.com/gignaWedi/RGModsRepo) to find a collection of RG mod profiles ready to use!
